@@ -8,7 +8,7 @@ $(document).ready(function(){
         var eventTime = moment().hour();
         console.log(eventTime);
         var currentTime = $('.row');
-
+        //convert military time to standard time
         currentTime.each(function(){
             var match = parseInt($(this).attr('id'))
             if (match < 9){
@@ -26,12 +26,25 @@ $(document).ready(function(){
         })
     }
     timeZone();
+
+    //saving data to local storage
+    function saveEvent(event){
+        event.preventDefault
+
+        var value = $(this).prev().val();
+        var time = $(this).parent().attr("id");
+
+        localStorage.setItem(time, value)
+    };
+
+    $(".saveBtn").click(saveEvent);
 })
 
 
 var timeSlot = ["","","","","","","","",""]
 function loadData (){
     //grab timeslot data from local storage 'get item'
+   JSON.stringify(timeSlot)
     //loop thru timeSlot on screen
     //for each row on the screen check timeslot array for non empty string 
     //set up eventTime, get the match < 9 '+=12' 
