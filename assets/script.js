@@ -29,35 +29,27 @@ $(document).ready(function(){
 
     //saving data to local storage
     function saveEvent(event){
-        event.preventDefault
+        event.preventDefault();
 
         var value = $(this).prev().val();
+        console.log(value);
         var time = $(this).parent().attr("id");
+        console.log(time);
 
         localStorage.setItem(time, value)
     };
 
     $(".saveBtn").click(saveEvent);
+
+    //loop through local storage
+    for (let i = 0; i < localStorage.length; i ++){
+        var key = localStorage.key(i);
+        var value = localStorage.getItem(key);
+
+        $(".time-zone").each(function(){
+            if ($(this).attr("id") == key){
+                $(this).text(value);
+            }
+        })
+    }
 })
-
-
-var timeSlot = ["","","","","","","","",""]
-function loadData (){
-    //grab timeslot data from local storage 'get item'
-   JSON.stringify(timeSlot)
-    //loop thru timeSlot on screen
-    //for each row on the screen check timeslot array for non empty string 
-    //set up eventTime, get the match < 9 '+=12' 
-    //calculate timeSlot index = to match - 9  
-    //if non empty string set textarea for row to string in the arrow pointed by index
-    //
-}
-//function save data
-function saveData (){
-    //event handled when you click save button 
-    //event time
-    //convert to military time '+12'
-    //set index = military time - 9 
-    //save incoming text in array
-    //save array in local storage
-}
