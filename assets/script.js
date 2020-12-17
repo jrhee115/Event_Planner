@@ -6,7 +6,7 @@ $(document).ready(function () {
     //adding the colors for specfic time 
     function timeZone() {
         var currentHour = moment().hour();
-        var currentTime = $('.row');
+        var currentTime = $('.text-area');
         //convert military time to standard time
         currentTime.each(function () {
             var match = parseInt($(this).attr('id'))
@@ -45,7 +45,7 @@ $(document).ready(function () {
         var key = localStorage.key(i);
         var value = localStorage.getItem(key);
 
-        $(".row").each(function () {
+        $(".text-area").each(function () {
             if ($(this).attr("id") == key) {
                 $(this).text(value);
             }
